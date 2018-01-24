@@ -25,5 +25,3 @@ function decrypt (encryptedText, n) {
   let newText = catcher.filter(e => e).join('')
   return decrypt(newText, n - 1)
 }
-
-console.log(decrypt('this iss ', 4))
