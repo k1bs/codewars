@@ -25,3 +25,88 @@ function decrypt (encryptedText, n) {
   let newText = catcher.filter(e => e).join('')
   return decrypt(newText, n - 1)
 }
+
+function myArraySum (x) {
+  let catcher = 0
+  for (var i = 0; i < x.length; i++) {
+    catcher += x[i]
+  }
+  return catcher
+}
+
+class Customer {
+  constructor (name, address) {
+    this.name = name
+    this.address = address
+  }
+
+  printShippingLabel () {
+    return `
+      ${this.name}
+      ${this.address}
+    `
+  }
+}
+
+function extractData () {
+  let table = document.querySelector('#data')
+  let rows = table.querySelectorAll('tr')
+  let catcher = []
+  for (let i = 0, len = rows.length; i < len; i++) {
+    catcher.push({
+      date: rows[i].querySelectorAll('td')[0],
+      requests: rows[i].querySelectorAll('td')[1],
+      paidImpressions: rows[i].querySelectorAll('td')[2],
+      revenue: rows[i].querySelectorAll('td')[3]
+    })
+  }
+  catcher.shift()
+  return catcher
+}
+
+function kebabize (str) {
+  let filteredStr = str.split('').filter(e => {
+    if (!parseInt(e, 10) && parseInt(e, 10) !== 0) {
+      return e
+    }
+  }).join('')
+  let arr = filteredStr.split(/(?=[A-Z])/)
+  let lower = arr.map(e => {
+    let str = e.toLowerCase()
+    return str
+  })
+  let string = lower.join('-')
+  return string
+}
+
+// console.log(kebabize('thisIs0GreatThing'))
+
+class FileNameExtractor {
+  static extractFileName (dirtyFileName) {
+    let sansDate = dirtyFileName.split('_')
+    sansDate.shift()
+    sansDate = sansDate.join('_')
+    sansDate = sansDate.split('.')
+    sansDate.pop()
+    sansDate = sansDate.join('.')
+    return sansDate
+  }
+}
+
+// FileNameExtractor.extractFileName('1_This_is_an_otherExample.mpg.OTHEREXTENSIONadasdassdassds34')
+
+function reverseByCenter (s) {
+  let middleChar, firstHalf, secondHalf
+  if ((s.length % 2) === 0) {
+    middleChar = ''
+    firstHalf = s.slice(0, Math.floor(s.length / 2))
+    secondHalf = s.substring(Math.ceil(s.length / 2))
+  } else {
+    middleChar = s.slice(Math.floor(s.length / 2), Math.ceil(s.length / 2))
+    firstHalf = s.slice(0, Math.floor(s.length / 2))
+    secondHalf = s.substring(Math.ceil(s.length / 2))
+  }
+  return secondHalf + middleChar + firstHalf
+}
+
+console.log(reverseByCenter('true'))
