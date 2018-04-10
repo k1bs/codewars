@@ -157,6 +157,20 @@ function encodeResistorColors (ohmsString) {
   return colorArr.join(' ')
 }
 
-console.log(encodeResistorColors('39 ohms'))
-console.log(encodeResistorColors('3.9k ohms'))
-console.log(encodeResistorColors('39M ohms'))
+// console.log(encodeResistorColors('39 ohms'))
+// console.log(encodeResistorColors('3.9k ohms'))
+// console.log(encodeResistorColors('39M ohms'))
+
+// Array.diff
+
+function array_diff (a, b) {
+  let keymap = {}
+  let returnArr = []
+  b.forEach(elem => {
+    keymap[elem] = true
+  })
+  returnArr = a.filter((item) => !keymap.hasOwnProperty(item))
+  return `a was ${a}, b was ${b}, expected ${returnArr}`
+}
+
+array_diff([1, 2, 3], [3, 5])
