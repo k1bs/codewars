@@ -109,4 +109,20 @@ function reverseByCenter (s) {
   return secondHalf + middleChar + firstHalf
 }
 
-console.log(reverseByCenter('true'))
+// console.log(reverseByCenter('true'))
+
+function group (arr) {
+  let order = []
+  let map = {}
+  arr.forEach(elem => {
+    if (!map.hasOwnProperty(elem)) {
+      order.push(elem)
+    }
+    map[elem] = (map[elem] || 0) + 1
+  })
+  let returnArr = []
+  order.forEach(elem => returnArr.push(Array(map[elem]).fill(elem)))
+  return returnArr
+}
+
+console.log(group([1, 2, 3, 2]))
