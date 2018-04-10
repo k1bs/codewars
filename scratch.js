@@ -125,4 +125,38 @@ function group (arr) {
   return returnArr
 }
 
-console.log(group([1, 2, 3, 2]))
+// console.log(group([1, 2, 3, 2]))
+
+// Resistor Color Codes: Part 2
+
+function encodeResistorColors (ohmsString) {
+  let colors = ['black', 'brown', 'red', 'orange', 'yellow', 'green', 'blue', 'violet', 'gray', 'white']
+  let ohmsArr = ohmsString.split(' ')[0].split('')
+  let colorArr = []
+  let multiplierColor = 0
+
+  ohmsArr.forEach(elem => {
+    if (elem.match(/[0-9]/) && colorArr.length < 2) {
+      colorArr.push(colors[parseInt(elem)])
+    } else if (elem.match(/[.]/)) {
+      multiplierColor -= 1
+    } else if (elem.match(/[0-9]/) && colorArr.length >= 2) {
+      multiplierColor += 1
+    } else if (elem.match(/[k]/)) {
+      multiplierColor += 3
+    } else if ((elem.match(/[M]/))) {
+      multiplierColor += 6
+    }
+  })
+  if (colorArr.length < 2) {
+    colorArr.push(colors[0])
+    multiplierColor -= 1
+  }
+  colorArr.push(colors[multiplierColor])
+  colorArr.push('gold')
+  return colorArr.join(' ')
+}
+
+console.log(encodeResistorColors('39 ohms'))
+console.log(encodeResistorColors('3.9k ohms'))
+console.log(encodeResistorColors('39M ohms'))
