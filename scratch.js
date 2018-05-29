@@ -174,3 +174,22 @@ function array_diff (a, b) {
 }
 
 array_diff([1, 2, 3], [3, 5])
+
+// Consonant Value
+
+function solve (s) {
+  let alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+  let arr = s.split(/[aeiou]/)
+  let score = []
+  arr.forEach(elem => {
+    let babyArr = elem.split('')
+    let elemScore = 0
+    babyArr.forEach(elem => {
+      elemScore += (alpha.indexOf(elem) + 1)
+    })
+    score.push(elemScore)
+  })
+  return score.sort((a, b) => b - a)[0]
+}
+
+console.log(solve('zodiacs'))
