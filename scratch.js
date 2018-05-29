@@ -192,4 +192,30 @@ function solve (s) {
   return score.sort((a, b) => b - a)[0]
 }
 
-console.log(solve('zodiacs'))
+// console.log(solve('zodiacs'))
+
+// Free Pizza
+
+function pizzaRewards (customers, minOrders, minPrice) {
+  let validCustomers = []
+  for (const key in customers) {
+    if (customers.hasOwnProperty(key)) {
+      const element = customers[key]
+      let validOrders = []
+      element.forEach(elem => {
+        if (elem >= minPrice) {
+          validOrders.push(elem)
+        }
+      })
+      if (validOrders.length >= minOrders) {
+        validCustomers.push(key)
+      }
+    }
+  }
+  return validCustomers
+}
+
+pizzaRewards({
+  'Bobby': [1, 4, 9],
+  'Billy': [2, 90, 4]
+}, 1, 2)
