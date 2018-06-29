@@ -63,4 +63,14 @@ def difference_of_squares(arg)
   sum**2 - sum_of_squares
 end
 
-puts difference_of_squares(10)
+# puts difference_of_squares(10)
+
+def is_sorted_and_how(arr)
+  return 'yes, ascending' if arr == arr.sort
+  return 'yes, descending' if arr == arr.sort { |x, y| y <=> x }
+  'no'
+end
+
+puts is_sorted_and_how([1, 2, 3])
+puts is_sorted_and_how([15, 6, -3])
+puts is_sorted_and_how([3, 2, 30])
