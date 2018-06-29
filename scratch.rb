@@ -35,4 +35,32 @@ def sum_pairs(ints, s)
   nil
 end
 
-puts sum_pairs([1, 2, 3, 4, 5], 5)
+# puts sum_pairs([1, 2, 3, 4, 5], 5)
+
+def binary_array_to_number(arr)
+  arr.reverse!
+  sum = 0
+  arr.map.with_index do |item, index|
+    if item == 1
+      if index.zero?
+        sum += 1 if item == 1
+      else
+        sum += (index * 2)
+      end
+    end
+  end
+  sum
+end
+
+def difference_of_squares(arg)
+  array = Array.new(arg) { |i| i + 1 }
+  sum = 0
+  sum_of_squares = 0
+  array.each do |elem|
+    sum += elem
+    sum_of_squares += (elem**2)
+  end
+  sum**2 - sum_of_squares
+end
+
+puts difference_of_squares(10)
